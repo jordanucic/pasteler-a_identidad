@@ -1,0 +1,180 @@
+/* --- Variables de Diseño y Paleta de Colores --- */
+:root {
+    --primary-color: #4a2312; /* Marrón oscuro predominante en la maqueta */
+    --text-color: #333333;
+    --text-light: #666666;
+    --bg-pdf: #4a2312; /* Color de fondo del bloque PDF */
+    --font-main: 'Plus Jakarta Sans', sans-serif;
+    --gap-standard: 24px;
+}
+
+/* --- Reseteo General --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: #ffffff;
+    color: var(--text-color);
+    line-height: 1.6;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* --- Contenedor Principal --- */
+.container {
+    max-width: 1100px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* --- Encabezado --- */
+.brand-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    letter-spacing: -0.5px;
+    margin-bottom: 4px;
+}
+
+.brand-header .subtitle {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    font-weight: 400;
+}
+
+/* --- Galería Grid (4 Columnas) --- */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--gap-standard);
+}
+
+.gallery-item {
+    aspect-ratio: 1 / 1; /* Cuadrados perfectos como en la maqueta */
+    overflow: hidden;
+    border-radius: 4px; /* Suave curvatura visual */
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+/* Efecto sutil moderno interactivo al pasar el mouse */
+.gallery-item:hover img {
+    transform: scale(1.03);
+}
+
+/* --- Sección Informativa (Flexbox) --- */
+.info-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 60px;
+    margin-top: 10px;
+}
+
+.info-section .description {
+    flex: 2;
+    font-size: 1.05rem;
+    color: var(--text-color);
+    text-align: justify;
+}
+
+.info-section .meta-details {
+    flex: 1;
+    font-size: 1rem;
+    color: var(--text-color);
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.info-section .meta-details p strong {
+    font-weight: 600;
+}
+
+/* --- Contenedor del PDF --- */
+.pdf-container {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.pdf-viewer {
+    width: 100%;
+    height: 480px; /* Altura ideal proporcional a la maqueta */
+    border: none;
+    border-radius: 4px;
+    background-color: var(--bg-pdf);
+}
+
+/* Vista alternativa si el navegador no renderiza el PDF directamente */
+.pdf-fallback {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    gap: 20px;
+}
+
+.btn-download {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    transition: opacity 0.2s ease;
+}
+
+.btn-download:hover {
+    opacity: 0.9;
+}
+
+/* --- Adaptabilidad Móvil (Responsive) --- */
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2x2 en pantallas medianas */
+    }
+    
+    .info-section {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .info-section .meta-details {
+        text-align: left;
+    }
+    
+    .pdf-viewer {
+        height: 350px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-grid {
+        grid-template-columns: 1fr; /* 1 columna en móviles pequeños */
+    }
+    
+    .brand-header h1 {
+        font-size: 2rem;
+    }
+}
